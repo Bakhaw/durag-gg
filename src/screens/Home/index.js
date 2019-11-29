@@ -4,7 +4,7 @@ import Champions from './Champions';
 
 export default function Home() {
   return (
-    <div>
+    <div className='Home'>
       <Champions />
     </div>
   );

@@ -1,0 +1,17 @@
+.ChampionDetail {
+  ul {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, 400px);
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    li {
+      width: 100%;
+      iframe {
+        height: 250px;
+        width: 100%;
+      }
+    }
+  }
+}

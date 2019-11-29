@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import API from '../../api';
+import { getChampionDetail, getPlaylistByChampionName } from './operations';
 
 import ChampionCard from '../../components/ChampionCard';
 import Loader from '../../components/Loader';
@@ -11,43 +11,37 @@ export default function ChampionDetail({ match }) {
   const [champion, setChampion] = useState(null);
   const [playlist, setPlaylist] = useState(null);
 
-  async function getChampion() {
-    const data = await API.champions.GET_CHAMPION_DETAIL(championName);
-    setChampion(data);
-  }
+  async function fetchData() {
+    const champion = await getChampionDetail(championName);
+    setChampion(champion);
 
-  async function getPlaylist() {
-    const data = await API.videos.GET_PLAYLIST_BY_ID(
-      API.playlistsIds[championName]
-    );
-    setPlaylist(data);
+    const playlist = await getPlaylistByChampionName(championName);
+    setPlaylist(playlist);
   }
 
   useEffect(() => {
-    getChampion();
-    getPlaylist();
+    fetchData();
   }, [championName]);
 
   if (!champion || !playlist) return <Loader />;
 
-  console.log('ici', playlist);
-
   return (
-    <div>
+    <div className='ChampionDetail'>
       <ChampionCard champion={champion} />
 
-      {playlist.map(d => (
-        <iframe
-          key={d.id}
-          id='ytplayer'
-          title={d.snippet.title}
-          type='text/html'
-          width='360'
-          height='260'
-          src={`https://www.youtube.com/embed/${d.snippet.resourceId.videoId}?autoplay=0`}
-          frameBorder='0'
-        />
-      ))}
+      <ul>
+        {playlist.map(d => (
+          <li key={d.id}>
+            <iframe
+              id='ytplayer'
+              title={d.snippet.title}
+              type='text/html'
+              src={`https://www.youtube.com/embed/${d.snippet.resourceId.videoId}?autoplay=0`}
+              frameBorder='0'
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

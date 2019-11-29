@@ -1,21 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import API from '../../api';
+import { getChampionImageBanner } from '../../api/champions';
 
 import Loader from '../../components/Loader';
 
 export default function ChampionCard({ champion = null }) {
+  const [opacity, setOpacity] = useState(0.5);
+
+  function toggleChampionCardOpacity() {
+    const newOpacity = opacity === 0.5 ? 0.1 : 0.5;
+    setOpacity(newOpacity);
+  }
+
   if (!champion) return <Loader />;
 
-  const { image, name } = champion;
+  const { id, name } = champion;
+
+  const backgroundURL = `url(${getChampionImageBanner(id)})`;
 
   return (
-    <>
-      <p>{name}</p>
-      <img
-        alt={`${name}-avatar`}
-        src={`${API.champions.CHAMPION_IMAGE_SQUARE(image.full)}`}
-      />
-    </>
+    <div
+      className='ChampionCard'
+      onMouseEnter={toggleChampionCardOpacity}
+      onMouseLeave={toggleChampionCardOpacity}
+      style={{
+        backgroundImage: `linear-gradient(rgb(0, 0, 0) 0, rgba(0, 0, 0, ${opacity}) 0), ${backgroundURL}`
+      }}
+    >
+      <h1>{name}</h1>
+    </div>
   );
 }
