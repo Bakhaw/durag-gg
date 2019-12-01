@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
-
-import { getChampionDetail, getPlaylistByChampionName } from './operations';
+import React, { useContext, useEffect, useState } from 'react';
 
 import ChampionCard from '../../components/ChampionCard';
-import Loader from '../../components/Loader';
 
-export default function ChampionDetail({ match }) {
+import { StateContext } from '../../Context';
+
+import { getChampionDetail, getPlaylistByChampionName } from './operations';
+import Videos from './Videos';
+import PageWrapper from '../../components/PageWrapper';
+
+function ChampionDetail({ match }) {
+  const { channelPlaylists } = useContext(StateContext);
   const { championName } = match.params;
 
   const [champion, setChampion] = useState(null);
@@ -15,33 +19,27 @@ export default function ChampionDetail({ match }) {
     const champion = await getChampionDetail(championName);
     setChampion(champion);
 
-    const playlist = await getPlaylistByChampionName(championName);
+    const playlist = await getPlaylistByChampionName(
+      channelPlaylists,
+      championName
+    );
     setPlaylist(playlist);
   }
 
   useEffect(() => {
     fetchData();
-  }, [championName]);
+  }, [championName, channelPlaylists]);
 
-  if (!champion || !playlist) return <Loader />;
+  const isLoading = channelPlaylists.length === 0 || !champion || !playlist;
 
   return (
-    <div className='ChampionDetail'>
-      <ChampionCard champion={champion} />
-
-      <ul>
-        {playlist.map(d => (
-          <li key={d.id}>
-            <iframe
-              id='ytplayer'
-              title={d.snippet.title}
-              type='text/html'
-              src={`https://www.youtube.com/embed/${d.snippet.resourceId.videoId}?autoplay=0`}
-              frameBorder='0'
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <PageWrapper isLoading={isLoading}>
+      <div className='ChampionDetail'>
+        <ChampionCard champion={champion} />
+        <Videos playlist={playlist} />
+      </div>
+    </PageWrapper>
   );
 }
+
+export default ChampionDetail;

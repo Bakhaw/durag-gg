@@ -20,8 +20,8 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        {routes.map((d, i) => (
-          <Route key={i} {...d} />
+        {routes.map((route, i) => (
+          <Route key={i} {...route} />
         ))}
       </Switch>
     </BrowserRouter>

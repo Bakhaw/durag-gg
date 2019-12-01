@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import SnackBar from './SnackBar';
 
-class UpdateApp extends Component {
-  state = {
-    hasUpdate: undefined
-  };
+function UpdateApp() {
+  const [hasUpdate, setHasUpdate] = useState(undefined);
 
-  componentDidMount() {
+  function checkForUpdates() {
     if (window.swObservable) {
-      window.swObservable.subscribe(hasUpdate => this.setState({ hasUpdate }));
+      window.swObservable.subscribe(hasUpdate => setHasUpdate(hasUpdate));
     }
   }
 
-  render() {
-    const { hasUpdate } = this.state;
-    const message = hasUpdate
-      ? 'A new update is available, please quit and restart the application'
-      : 'The application is now cached and ready to use offline';
+  useEffect(() => {
+    checkForUpdates();
+  });
 
-    return (
-      <React.Fragment>
-        {hasUpdate !== undefined && <SnackBar message={message} />}
-      </React.Fragment>
-    );
-  }
+  const message = hasUpdate
+    ? 'A new update is available, please quit and restart the application'
+    : 'The application is now cached and ready to use offline';
+
+  return (
+    <React.Fragment>
+      {hasUpdate !== undefined && <SnackBar message={message} />}
+    </React.Fragment>
+  );
 }
 
 export default UpdateApp;

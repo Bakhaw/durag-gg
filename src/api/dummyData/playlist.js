@@ -1,12 +1,4 @@
-// ONE PLAYLIST WITH PLAYLIST ITEMS
 export default {
-  kind: 'youtube#playlistItemListResponse',
-  etag: '"j6xRRd8dTPVVptg711_CSPADRfg/INbGWKVqcu-VPNB2ymYWEv7tr80"',
-  nextPageToken: 'CAUQAA',
-  pageInfo: {
-    totalResults: 180,
-    resultsPerPage: 5
-  },
   items: [
     {
       kind: 'youtube#playlistItem',

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { getAllChampions } from './operations';
 
 import ChampionCard from '../../components/ChampionCard';
-import Loader from '../../components/Loader';
+import PageWrapper from '../../components/PageWrapper';
 
-export default function Champions() {
+function Champions() {
   const [champions, setChampions] = useState([]);
 
   async function fetchData() {
@@ -18,20 +18,25 @@ export default function Champions() {
     fetchData();
   }, []);
 
-  if (champions.length === 0) return <Loader />;
+  const isLoading = champions.length === 0;
 
   return (
-    <ul className='Home__Champions'>
-      {champions.map(champ => {
-        const { key, name } = champ;
-        return (
-          <li key={key}>
-            <Link to={`/detail/${name}`}>
-              <ChampionCard champion={champ} />
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+    <PageWrapper isLoading={isLoading}>
+      <ul className='Home__Champions'>
+        {champions.map(champion => {
+          const { key, name } = champion;
+
+          return (
+            <li key={key}>
+              <Link to={`/detail/${name}`}>
+                <ChampionCard champion={champion} />
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </PageWrapper>
   );
 }
+
+export default Champions;

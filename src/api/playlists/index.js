@@ -1,33 +1,55 @@
 import axios from 'axios';
 
-import dummyPlaylist from '../dummyPlaylist';
+import { dummyChannelPlaylists, dummyPlaylist } from '../dummyData';
 import { API_KEY } from '../keys';
 
-export async function fetchChannelPlaylists(channelId) {
-  // TODO Find a way to be sure that all champs have their playlists associated
-  const firstPageUrl = `https://www.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=${channelId}&maxResults=50&key=${API_KEY}`;
-  const { data: firstPageData } = await axios.get(firstPageUrl);
+import { BASE_URL } from './constants';
 
-  const secondPageDataUrl = `https://www.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=${channelId}&maxResults=50&pageToken=${firstPageData.nextPageToken}&key=${API_KEY}`;
-  const { data: secondPageData } = await axios.get(secondPageDataUrl);
+function fetchAllChannelPlaylists(channelId) {
+  let fullData = [];
 
-  const fullData = [...firstPageData.items, ...secondPageData.items];
+  // TODO create JSON mocks with api response (node-fs)
+  return async function recursiveFetchPlaylists(nextPageToken) {
+    const pageUrl = nextPageToken
+      ? `${BASE_URL}/playlists?part=snippet&channelId=${channelId}&maxResults=50&pageToken=${nextPageToken}&key=${API_KEY}`
+      : `${BASE_URL}/playlists?part=snippet&channelId=${channelId}&maxResults=50&key=${API_KEY}`;
 
-  return fullData;
+    const { data } = await axios.get(pageUrl);
+
+    fullData = [...fullData, ...data.items];
+
+    if (fullData.length < data.pageInfo.totalResults) {
+      return recursiveFetchPlaylists(data.nextPageToken);
+    }
+
+    return fullData;
+  };
+}
+
+export async function fetchPlaylistsByChannelId(channelId) {
+  // const allPlaylists = fetchAllChannelPlaylists(channelId);
+  // const fullData = await allPlaylists();
+
+  // return fullData;
+
+  // Uncomment this line to return dummy data instead of spamming YouTube API
+  return dummyChannelPlaylists.items;
 }
 
 export async function fetchPlaylistById(playlistId) {
   // TODO fetch 10 per 10
-  const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=10&key=${API_KEY}`;
-  const { data } = await axios.get(url);
+  // const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=10&key=${API_KEY}`;
+  // const { data } = await axios.get(url);
 
-  return data.items;
+  // return data.items;
 
   // Uncomment this line to return dummy data instead of spamming YouTube API
-  // return dummyPlaylist.items;
+  return dummyPlaylist.items;
 }
 
 export async function mapPlaylistsToChamp(champs, playlists, championName) {
+  if (champs.length === 0 || playlists.length === 0 || !championName) return;
+
   const checker = value => champs.some(e => value.snippet.title.includes(e));
 
   const channelPlaylists = playlists

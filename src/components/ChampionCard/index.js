@@ -4,7 +4,7 @@ import { getChampionImageBanner } from '../../api/champions';
 
 import Loader from '../../components/Loader';
 
-export default function ChampionCard({ champion = null }) {
+function ChampionCard({ champion = null }) {
   const [opacity, setOpacity] = useState(0.5);
 
   function toggleChampionCardOpacity() {
@@ -31,3 +31,5 @@ export default function ChampionCard({ champion = null }) {
     </div>
   );
 }
+
+export default ChampionCard;
