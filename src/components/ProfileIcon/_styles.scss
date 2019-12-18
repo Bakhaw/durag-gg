@@ -1,0 +1,15 @@
+.ProfileIcon {
+  position: absolute;
+
+  img {
+    display: block;
+  }
+
+  span {
+    color: #fff;
+    z-index: 1;
+    position: absolute;
+    left: 40%;
+    bottom: 0;
+  }
+}

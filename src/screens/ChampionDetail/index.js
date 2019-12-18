@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import ChampionCard from '../../components/ChampionCard';
+import PageWrapper from '../../components/PageWrapper';
+import ChampionBanner from '../../components/ChampionBanner';
 
 import { StateContext } from '../../Context';
 
 import { getChampionDetail, getPlaylistByChampionName } from './operations';
 import Videos from './Videos';
-import PageWrapper from '../../components/PageWrapper';
 
 function ChampionDetail({ match }) {
   const { channelPlaylists } = useContext(StateContext);
   const { championName } = match.params;
 
+  const [error, setError] = useState(false);
   const [champion, setChampion] = useState(null);
   const [playlist, setPlaylist] = useState(null);
 
@@ -19,11 +20,18 @@ function ChampionDetail({ match }) {
     const champion = await getChampionDetail(championName);
     setChampion(champion);
 
-    const playlist = await getPlaylistByChampionName(
+    const data = await getPlaylistByChampionName(
       channelPlaylists,
       championName
     );
-    setPlaylist(playlist);
+
+    if (data === 'No playlist found for this champions') {
+      setError(true);
+      setPlaylist({});
+    } else {
+      setPlaylist(data);
+      setError(false);
+    }
   }
 
   useEffect(() => {
@@ -35,8 +43,12 @@ function ChampionDetail({ match }) {
   return (
     <PageWrapper isLoading={isLoading}>
       <div className='ChampionDetail'>
-        <ChampionCard champion={champion} />
-        <Videos playlist={playlist} />
+        <ChampionBanner champion={champion} />
+        {error ? (
+          <p>Pas de playlist trouvée pour ce champion</p>
+        ) : (
+          <Videos playlist={playlist} />
+        )}
       </div>
     </PageWrapper>
   );

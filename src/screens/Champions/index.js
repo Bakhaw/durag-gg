@@ -21,21 +21,23 @@ function Champions() {
   const isLoading = champions.length === 0;
 
   return (
-    <PageWrapper isLoading={isLoading}>
-      <ul className='Home__Champions'>
-        {champions.map(champion => {
-          const { key, name } = champion;
+    <div className='Champions'>
+      <PageWrapper isLoading={isLoading}>
+        <ul>
+          {champions.map(champion => {
+            const { key, name } = champion;
 
-          return (
-            <li key={key}>
-              <Link to={`/detail/${name}`}>
-                <ChampionCard champion={champion} />
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </PageWrapper>
+            return (
+              <li key={key}>
+                <Link to={`/champions/details/${name}`}>
+                  <ChampionCard champion={champion} />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </PageWrapper>
+    </div>
   );
 }
 

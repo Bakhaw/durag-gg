@@ -1,0 +1,17 @@
+.ChampionBanner {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // background-image is set in ChampionCard component
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  h1 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 48px;
+  }
+}

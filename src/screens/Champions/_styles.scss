@@ -1,0 +1,13 @@
+.Champions {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+
+  ul {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 320px);
+    gap: 30px 50px;
+    padding: 20px;
+  }
+}

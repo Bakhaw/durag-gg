@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { getChampionImageBanner } from '../../api/champions';
 
 import Loader from '../../components/Loader';
 
-function ChampionCard({ champion = null }) {
+function ChampionCard({ champion }) {
   const [opacity, setOpacity] = useState(0.5);
 
   function toggleChampionCardOpacity() {
@@ -15,7 +16,6 @@ function ChampionCard({ champion = null }) {
   if (!champion) return <Loader />;
 
   const { id, name } = champion;
-
   const backgroundURL = `url(${getChampionImageBanner(id)})`;
 
   return (
@@ -31,5 +31,10 @@ function ChampionCard({ champion = null }) {
     </div>
   );
 }
+
+ChampionCard.propTypes = {
+  /** object with champion infos */
+  champion: PropTypes.object
+};
 
 export default ChampionCard;

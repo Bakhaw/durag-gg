@@ -14,7 +14,7 @@ export async function getPlaylistByChampionName(
   channelPlaylists,
   championName
 ) {
-  const champsByName = await fetchAllChampionsNames();
+  const champsByName = fetchAllChampionsNames();
 
   const data = await mapPlaylistsToChamp(
     champsByName,

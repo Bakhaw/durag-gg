@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Champions from './Champions';
+import HomeBg from '../../assets/home-bg.svg';
 
 function Home() {
   return (
-    <div className='Home'>
-      <Champions />
+    <div className='Home' style={{ backgroundImage: `url(${HomeBg})` }}>
+      <h1>DURAG.GG</h1>
     </div>
   );
 }

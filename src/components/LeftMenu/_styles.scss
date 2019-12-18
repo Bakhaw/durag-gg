@@ -1,0 +1,32 @@
+.LeftMenu {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  width: 90px;
+  padding: 20px;
+  background: rgba(175, 175, 175, 0.4);
+  box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
+
+  &__ListItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+    color: #452a60;
+    font-weight: 900;
+    font-size: 14px;
+
+    &:hover {
+      color: #f2f2f2;
+    }
+
+    svg {
+      height: 50px;
+      width: 50px;
+      margin-bottom: 20px;
+    }
+  }
+}

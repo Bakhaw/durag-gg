@@ -8,7 +8,7 @@ export default {
       snippet: {
         publishedAt: '2019-11-23T15:30:04.000Z',
         channelId: 'UCsVz2qkd_oGXGC66fcH4SFA',
-        title: 'Cassiopeia Mid vs Zed - KR Grandmaster Patch 9.23',
+        title: 'Cassiopeia Mid vs Zed - KR Grandmaster Patch 9.24',
         description:
           '#Cassiopeia Mid played by 사랑해 허수, #KRGrandmaster 521 LP\nPlaylist: https://www.youtube.com/playlist?list=PLPUygacvheSNqAW7k4LZJIeFHCJfH5-fY\n\nMore information:\n- Runes: 00:18 (Unsealed Spellbook)\n- Damage dealt: 35:50\n- Ability & Build: 35:39\n- Skin: Jade Fang Cassiopeia\n- Match History: https://matchhistory.na.leagueoflegends.com/en/#match-details/KR/3985786330?tab=overview&participant=8\n- OP.GG: http://www.op.gg/summoner/userName=%EC%82%AC%EB%9E%91%ED%95%B4%20%ED%97%88%EC%88%98\nOP.GG link maybe not working because summoner name has changed!\n\nMore replays:\n- Mid: https://www.youtube.com/playlist?list=PLPUygacvheSP-MFT1afuZhMcUabIj9Ybd\n- KR Grandmaster: https://www.youtube.com/playlist?list=PLPUygacvheSM4uGxG8ZfLBTG3TXfKpjer\n\nSubscribe to get new challenger replays daily:\n- Challenger Replays: https://www.youtube.com/ChallengerReplays?sub_confirmation=1\n- Challenger Match: https://www.youtube.com/ChallengerMatch?sub_confirmation=1\n- Challenger Montage: https://www.youtube.com/ChallengerMontage?sub_confirmation=1\n\nContact me: lolreplayschallenger@gmail.com',
         thumbnails: {
@@ -55,7 +55,7 @@ export default {
       snippet: {
         publishedAt: '2019-11-22T16:00:21.000Z',
         channelId: 'UCsVz2qkd_oGXGC66fcH4SFA',
-        title: 'Cassiopeia Bot vs Ezreal - KR Master Patch 9.23',
+        title: 'Cassiopeia Bot vs Ezreal - KR Master Patch 9.24',
         description:
           '#Cassiopeia Bot played by wxqecy, #KRMaster 120 LP\nPlaylist: https://www.youtube.com/playlist?list=PLPUygacvheSNqAW7k4LZJIeFHCJfH5-fY\n\nMore information:\n- Runes: 00:18 (Conqueror)\n- Damage dealt: 29:45\n- Ability & Build: 29:34\n- Skin: Jade Fang Cassiopeia\n- Match History: https://matchhistory.na.leagueoflegends.com/en/#match-details/KR/3985305363?tab=overview&participant=7\n- OP.GG: http://www.op.gg/summoner/userName=wxqecy\nOP.GG link maybe not working because summoner name has changed!\n\nMore replays:\n- Bot: https://www.youtube.com/playlist?list=PLPUygacvheSO_2SN1glJiLcLuOLwnhGhs\n- KR Master: https://www.youtube.com/playlist?list=PLPUygacvheSMfPVj7qFJuYAjIOBy_nJsb\n\nSubscribe to get new challenger replays daily:\n- Challenger Replays: https://www.youtube.com/ChallengerReplays?sub_confirmation=1\n- Challenger Match: https://www.youtube.com/ChallengerMatch?sub_confirmation=1\n- Challenger Montage: https://www.youtube.com/ChallengerMontage?sub_confirmation=1\n\nContact me: lolreplayschallenger@gmail.com',
         thumbnails: {
@@ -102,7 +102,7 @@ export default {
       snippet: {
         publishedAt: '2019-11-21T14:30:06.000Z',
         channelId: 'UCsVz2qkd_oGXGC66fcH4SFA',
-        title: 'Cassiopeia Top vs Lucian - KR Master Patch 9.23',
+        title: 'Cassiopeia Top vs Lucian - KR Master Patch 9.24',
         description:
           '#Cassiopeia Top played by Unaware, #KRMaster 203 LP\nPlaylist: https://www.youtube.com/playlist?list=PLPUygacvheSNqAW7k4LZJIeFHCJfH5-fY\n\nMore information:\n- Runes: 00:18 (Conqueror)\n- Damage dealt: 24:45\n- Ability & Build: 24:34\n- Skin: Classic Cassiopeia\n- Match History: https://matchhistory.na.leagueoflegends.com/en/#match-details/KR/3985226242?tab=overview&participant=1\n- OP.GG: http://www.op.gg/summoner/userName=Unaware\nOP.GG link maybe not working because summoner name has changed!\n\nMore replays:\n- Top: https://www.youtube.com/playlist?list=PLPUygacvheSMnrKWezkRVrYaJbBSHWYJ4\n- KR Master: https://www.youtube.com/playlist?list=PLPUygacvheSMfPVj7qFJuYAjIOBy_nJsb\n\nSubscribe to get new challenger replays daily:\n- Challenger Replays: https://www.youtube.com/ChallengerReplays?sub_confirmation=1\n- Challenger Match: https://www.youtube.com/ChallengerMatch?sub_confirmation=1\n- Challenger Montage: https://www.youtube.com/ChallengerMontage?sub_confirmation=1\n\nContact me: lolreplayschallenger@gmail.com',
         thumbnails: {

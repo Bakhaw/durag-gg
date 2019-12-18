@@ -1,7 +1,7 @@
 import { fetchAllChampions } from '../../api/champions';
 
 export async function getAllChampions() {
-  const data = await fetchAllChampions();
+  const data = fetchAllChampions();
 
   return data;
 }
