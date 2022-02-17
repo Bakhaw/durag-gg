@@ -22,7 +22,8 @@ export async function fetchSummonerLeague(
   const url = `${RIOT_API_BASE_URL}/league/v4/entries/by-summoner/${summonerId}?api_key=${RIOT_API_KEY}`;
 
   try {
-    const { data } = await axios.get(PROXY_URL + url);
+    // const { data } = await axios.get(PROXY_URL + url);
+    const { data } = await axios.get(url);
     const filterQueueType = queueType =>
       data.filter(rank => rank.queueType === queueType)[0];
 

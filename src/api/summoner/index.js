@@ -12,7 +12,8 @@ export async function fetchSummoner(summonerName) {
   const url = `${RIOT_API_BASE_URL}/summoner/v4/summoners/by-name/${summonerName}?api_key=${RIOT_API_KEY}`;
 
   try {
-    const { data } = await axios.get(PROXY_URL + url);
+    // const { data } = await axios.get(PROXY_URL + url);
+    const { data } = await axios.get(url);
     return data;
   } catch (error) {
     throw error;

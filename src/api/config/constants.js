@@ -1,6 +1,6 @@
 // export all URLS and global constants in this file
 export const DDRAGONS_BASE_URL = 'https://ddragon.leagueoflegends.com/cdn';
-export const RIOT_API_BASE_URL = 'https://euw1.api.riotgames.com/lol';
+export const RIOT_API_BASE_URL = 'https://euw1.api.riotgames.com/lol'; // update with v5 "https://euw1.api.riotgames.com/lol"
 export const YOUTUBE_API_BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
 export const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';

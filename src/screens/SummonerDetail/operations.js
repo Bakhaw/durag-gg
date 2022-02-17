@@ -11,7 +11,9 @@ import { fetchChampionById } from '../../api/champions';
 export async function getSummonerDetail(summonerName) {
   const accountInfos = await fetchSummoner(summonerName);
   const rankInfos = await fetchSummonerLeague(accountInfos.id, null, true);
-  const matches = await getSummonerMatches(accountInfos.accountId);
+  const matches = await getSummonerMatches(accountInfos.puuid);
+
+  console.log('hehe', matches);
 
   const summonerDetail = {
     accountInfos,
@@ -25,10 +27,10 @@ export async function getSummonerDetail(summonerName) {
 /**
  * Get recent summoner matches
  *
- * @param accountId {string} - encrypted account ID
+ * @param puuid {string} - account puuid
  */
-async function getSummonerMatches(accountId) {
-  const { matches } = await fetchSummonerMatches(accountId);
+async function getSummonerMatches(puuid) {
+  const { matches } = await fetchSummonerMatches(puuid);
   const activeChampionAndMatchDetails = await addActiveChampionAndMatchDetails(
     matches
   );
@@ -44,7 +46,10 @@ async function getSummonerMatches(accountId) {
  * @param matches {array} - array of objects corresponding to summoner matches list
  */
 async function addActiveChampionAndMatchDetails(matches) {
+  console.log('matches', matches);
+
   const result = matches.map(async match => ({
+    // https://europe.api.riotgames.com/lol/match/v5/matches/EUW1_5733757883?api_key=RGAPI-21b90554-30e3-495d-9edd-3fd778f38015
     activeChampion: fetchChampionById(match.champion),
     matchDetails: {
       queue: match.queue,

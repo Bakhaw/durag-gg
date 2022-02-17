@@ -12,7 +12,7 @@ export async function fetchLiveGame(summonerId) {
   const url = `${RIOT_API_BASE_URL}/spectator/v4/active-games/by-summoner/${summonerId}?api_key=${RIOT_API_KEY}`;
 
   try {
-    const { data } = await axios.get(PROXY_URL + url);
+    const { data } = await axios.get(url);
     return data;
   } catch (error) {
     console.log('Error', error);
@@ -25,10 +25,10 @@ export async function fetchLiveGame(summonerId) {
  * @param matchId {string} - the matchId from the game
  */
 export async function fetchMatchById(matchId) {
-  const url = `${RIOT_API_BASE_URL}/match/v4/matches/${matchId}?api_key=${RIOT_API_KEY}`;
+  const url = `${RIOT_API_BASE_URL}/match/v5/matches/${matchId}?api_key=${RIOT_API_KEY}`;
 
   try {
-    const { data } = await axios.get(PROXY_URL + url);
+    const { data } = await axios.get(url);
     return data;
   } catch (error) {
     console.log('Error', error);
@@ -38,13 +38,16 @@ export async function fetchMatchById(matchId) {
 /**
  * Fetch all recent games from a summoner using account ID
  *
- * @param accountId {string} - encrypted account ID
+ * @param puuid {string} - account puuid
  */
-export async function fetchSummonerMatches(accountId) {
-  const url = `${RIOT_API_BASE_URL}/match/v4/matchlists/by-account/${accountId}?endIndex=5&api_key=${RIOT_API_KEY}`;
+export async function fetchSummonerMatches(puuid) {
+  const url = `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=5&api_key=${RIOT_API_KEY}`;
+
+  console.log(url)
 
   try {
-    const { data } = await axios.get(PROXY_URL + url);
+    // const { data } = await axios.get(PROXY_URL + url);
+    const { data } = await axios.get(url);
     return data;
   } catch (error) {
     console.log('Error', error);
