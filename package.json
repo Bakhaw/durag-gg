@@ -6,14 +6,14 @@
     "@material-ui/core": "^4.7.0",
     "@material-ui/icons": "^4.5.1",
     "axios": "^0.19.0",
-    "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.0.0"
+    "react-scripts": "^5.0.0",
+    "sass": "^1.49.7"
   },
   "scripts": {
-    "dev": "PORT=8080 react-scripts start",
+    "dev": "react-scripts start",
     "deploy": "npm run build && firebase deploy",
     "build": "react-scripts build",
     "test": "react-scripts test",
